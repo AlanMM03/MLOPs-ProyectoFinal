@@ -4,7 +4,7 @@ from google.cloud import bigquery
 from google.cloud import storage
 
 # ==========================================
-# 0. CONFIGURACIÓN DE VARIABLES (REEMPLAZA AQUÍ)
+# 0. CONFIGURACIÓN DE VARIABLES
 # ==========================================
 PROJECT_ID_PROCESAMIENTO = 'mlops-fp-procesamiento'
 DATASET_PROCESAMIENTO = 'data_processing'
@@ -73,7 +73,6 @@ job_config = bigquery.LoadJobConfig(
     write_disposition="WRITE_APPEND" # Añade los datos si la tabla existe
 )
 
-# ¡AQUÍ ESTÁ LA MAGIA! Usamos bq_client (del paso 1) en lugar de crear uno nuevo
 job_principal = bq_client.load_table_from_dataframe(
     df_resultados, table_id_principal, job_config=job_config
 )
